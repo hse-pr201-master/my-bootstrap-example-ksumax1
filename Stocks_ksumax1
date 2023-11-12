@@ -1,0 +1,42 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+!pip install arch
+Requirement already satisfied: arch in c:\users\kilia\anaconda3\lib\site-packages (6.2.0)
+Requirement already satisfied: numpy>=1.19 in c:\users\kilia\anaconda3\lib\site-packages (from arch) (1.24.3)
+Requirement already satisfied: scipy>=1.5 in c:\users\kilia\anaconda3\lib\site-packages (from arch) (1.11.1)
+Requirement already satisfied: pandas>=1.1 in c:\users\kilia\anaconda3\lib\site-packages (from arch) (2.0.3)
+Requirement already satisfied: statsmodels>=0.12 in c:\users\kilia\anaconda3\lib\site-packages (from arch) (0.14.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\kilia\appdata\roaming\python\python311\site-packages (from pandas>=1.1->arch) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in c:\users\kilia\anaconda3\lib\site-packages (from pandas>=1.1->arch) (2023.3.post1)
+Requirement already satisfied: tzdata>=2022.1 in c:\users\kilia\anaconda3\lib\site-packages (from pandas>=1.1->arch) (2023.3)
+Requirement already satisfied: patsy>=0.5.2 in c:\users\kilia\anaconda3\lib\site-packages (from statsmodels>=0.12->arch) (0.5.3)
+Requirement already satisfied: packaging>=21.3 in c:\users\kilia\anaconda3\lib\site-packages (from statsmodels>=0.12->arch) (23.1)
+Requirement already satisfied: six in c:\users\kilia\anaconda3\lib\site-packages (from patsy>=0.5.2->statsmodels>=0.12->arch) (1.16.0)
+from arch.bootstrap import IIDBootstrap, IndependentSamplesBootstrap
+x = pd.read_clipboard(header=None)
+# Изменение котировок акций компании "Магнит" за 2009 год
+
+np.mean(x)
+1283.407215909091
+np.average(x)
+1283.407215909091
+sns.displot(x)
+
+[np.quantile(x, 0.025), np.quantile(x, 0.975)]
+[506.9, 2182.3274999999994]
+def corr(x, y):
+  corr_mat = np.corrcoef(x, y)
+  return corr_mat[0, 1]
+y = pd.read_clipboard(header=None)
+# Изменение котировок акций компании "КрасОкт" за 2009 год
+np.corrcoef(x, y)
+array([[1.        , 0.80635059],
+       [0.80635059, 1.        ]])
+def mean_diff(x, y):
+  return np.mean(y) - np.mean(x)
+mean_diff(x,y)
+-917.1856534090911
+mean_diff(y,x)
+917.1856534090911
+ 
