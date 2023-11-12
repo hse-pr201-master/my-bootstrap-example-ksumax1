@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
+# Подключаем библиотеки
 !pip install arch
 Requirement already satisfied: arch in c:\users\kilia\anaconda3\lib\site-packages (6.2.0)
 Requirement already satisfied: numpy>=1.19 in c:\users\kilia\anaconda3\lib\site-packages (from arch) (1.24.3)
@@ -17,12 +18,14 @@ from arch.bootstrap import IIDBootstrap, IndependentSamplesBootstrap
 x = pd.read_clipboard(header=None)
 # Изменение котировок акций компании "Магнит" за 2009 год
 
+# Ищем среднее по акции за год
 np.mean(x)
 1283.407215909091
 np.average(x)
 1283.407215909091
 sns.displot(x)
 
+# Квантили
 [np.quantile(x, 0.025), np.quantile(x, 0.975)]
 [506.9, 2182.3274999999994]
 def corr(x, y):
@@ -31,6 +34,7 @@ def corr(x, y):
 y = pd.read_clipboard(header=None)
 # Изменение котировок акций компании "КрасОкт" за 2009 год
 np.corrcoef(x, y)
+# Корреляционная матрица между акциями Магнита и КрасОкт
 array([[1.        , 0.80635059],
        [0.80635059, 1.        ]])
 def mean_diff(x, y):
